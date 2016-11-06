@@ -15,11 +15,11 @@ $(document).ready(function() {
             .done(function(response) {
 
                 for (var i = 0; i < response.data.length; i++) {
-
-                    $('#GIF-area').prepend("<img src='" + response.data[i].images.fixed_height_still.url + "'" + "data-still='" + response.data[i].images.fixed_height_still.url + "'" + "data-animate='" + response.data[i].images.fixed_height.url + "'>");
-                    $('#GIF-area').prepend('<p>Rating: ' + response.data[i].rating + '</p>');
+                    $('#GIF-area').prepend('<div id="img' + i + '">');
+                    $('#img' + i).prepend("<img src='" + response.data[i].images.fixed_height_still.url + "'" + "data-still='" + response.data[i].images.fixed_height_still.url + "'" + "data-animate='" + response.data[i].images.fixed_height.url + "'>");
+                    // $('#img' + i).prepend('<p>Rating: ' + response.data[i].rating + '</p>');
                     $('img').attr("data-state", "still");
-                    $('img').addClass('gif');
+                    $('img').addClass('gif img-thumbnail');
                 }
             })
     };
@@ -36,7 +36,7 @@ $(document).ready(function() {
 
             // Then dynamicaly generates buttons for each feel in the array
 
-            var button = $('<button>');
+            var button = $('<button class="btn btn-primary">');
             button.addClass('feel'); // Adds a class 
             button.attr('data-search', feels[i]); // Adds a data-attribute
             button.text(feels[i]); // Provides the initial button text

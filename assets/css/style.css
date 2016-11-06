@@ -3,7 +3,10 @@
 }
 
 img,
-{
+p {
   float: left;
-  background-color: blue;
+}
+
+img {
+  margin: 10px;
 }
