@@ -13,9 +13,12 @@ $(document).ready(function() {
                 method: 'GET'
             })
             .done(function(response) {
+
                 for (var i = 0; i < response.data.length; i++) {
                     $('#GIF-area').prepend('<p>Rating: ' + response.data[i].rating + '</p>');
-                    $('#GIF-area').prepend("<img src='" + response.data[i].images.fixed_height_still.url + "'>");
+                    $('#GIF-area').prepend("<img src='" + response.data[i].images.fixed_height_still.url + "'" + "data-still='" + response.data[i].images.fixed_height_still.url + "'" + "data-animate='" + response.data[i].images.fixed_height.url + "'>");
+                    $('img').attr("data-state", "still");
+                    $('img').addClass('gif');
                 }
             })
     };
@@ -57,7 +60,7 @@ $(document).ready(function() {
         return false;
     })
 
-    $(document).on('click', '.feel', getTheFeels);
+    $(this).on('click', '.feel', getTheFeels);
 
 
     // ========================================================
@@ -65,5 +68,37 @@ $(document).ready(function() {
     // This calls the renderButtons() function
     renderButtons();
 
+    $(this).on('click', '.gif', function() {
+        //STEP ONE: study the html above. Look at all the data attributes. Run the file in the browser. Look at the images. After you fill in steps 1 and 2 you'll be able to pause gifs from giphy.
+
+        //STEP TWO: make a variable named state and then reference the button's data-state into it. Do not use .data('state'). It won't work the way we expect.
+
+        //---------------FILL IN CODE HERE FOR STEP TWO----------------------------
+        var state = $(this).attr('data-state');
+
+
+        //----------------------------------------------------
+
+        /*STEP THREE:
+         * if variable state is equal to 'still' then
+         * update the src attribute of this image that you clicked on to what data-animate is equal to for this image
+         * and update the data-state attribute to 'animate'
+         * if state does not equal 'still' then
+         * update the src attribute of this image that you clicked on to what data-still is equal to for this image
+         * and update the data-state attribute to 'still'
+         */
+
+        //---------------FILL IN CODE HERE FOR STEP THREE----------------------------
+        if (state == 'still') {
+            $(this).attr('src', $(this).data('animate'));
+            $(this).attr('data-state', 'animate');
+        } else {
+            $(this).attr('src', $(this).data('still'));
+            $(this).attr('data-state', 'still');
+        }
+        //----------------------------------------------------
+
+        //STEP FOUR: open the file in the browser and click on the images. Then click again to pause.
+    });
 
 });
