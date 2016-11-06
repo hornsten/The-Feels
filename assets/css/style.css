@@ -1,1 +1,9 @@
+#addFeels {
+  margin-top: 5px;
+}
 
+img,
+{
+  float: left;
+  background-color: blue;
+}
