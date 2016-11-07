@@ -1,6 +1,38 @@
 $(document).ready(function() {
 
-    var feels = ['Happy Dance', 'So Tired', 'Yas, Kween!', 'I Can\'t Even', 'Forgot How to Person', 'Huh?', 'Angry', 'Scared', 'Forever Alone', 'Mic Drop', 'Blerg'];
+    var feels = ['Happy Dance', 'So Tired', 'Yas, Kween!', 'I Can\'t Even', 'Forgot How to Person',
+        'Huh?', 'Angry', 'Scared', 'Forever Alone', 'Mic Drop', 'Welp', 'Proud', 'Hangry', 'Curious', 'Jealous'
+    ];
+
+    renderButtons();
+
+    $(this).on('click', '.feel', getTheFeels);
+
+    $('#addFeels').on('click', addNewFeels);
+
+    $(this).on('click', '.gif', stateToggle);
+
+    // -----------------------------------------------Functions--------------------------------------
+
+    function renderButtons() {
+
+        // Prevents repeat buttons)
+
+        $('#button-area').empty();
+
+        // Loops through the array of feels
+
+        for (var i = 0; i < feels.length; i++) {
+
+            // Then dynamically generates buttons for each feel in the array
+
+            var button = $('<button class="btn btn-info">');
+            button.addClass('feel'); // Adds a class 
+            button.attr('data-search', feels[i]); // Adds a data-attribute
+            button.text(feels[i]); // Provides the initial button text
+            $('#button-area').append(button); // Adds the button to the HTML
+        }
+    }
 
     function getTheFeels() {
 
@@ -25,28 +57,7 @@ $(document).ready(function() {
             })
     };
 
-    function renderButtons() {
-
-        // Prevents repeat buttons)
-
-        $('#button-area').empty();
-
-        // Loops through the array of feels
-
-        for (var i = 0; i < feels.length; i++) {
-
-            // Then dynamicaly generates buttons for each feel in the array
-
-            var button = $('<button class="btn btn-primary">');
-            button.addClass('feel'); // Adds a class 
-            button.attr('data-search', feels[i]); // Adds a data-attribute
-            button.text(feels[i]); // Provides the initial button text
-            $('#button-area').append(button); // Adds the button to the HTML
-        }
-    }
-
-    $('#addFeels').on('click', function() {
-
+    function addNewFeels() {
         // This line of code will grab the input from the textbox
         var feel = $('#feels-input').val().trim();
 
@@ -58,13 +69,9 @@ $(document).ready(function() {
 
         // This allows users to hit "enter" instead of clicking on the search button and stay on the page
         return false;
-    })
+    }
 
-    $(this).on('click', '.feel', getTheFeels);
-
-    renderButtons();
-
-    $(this).on('click', '.gif', function() {
+    function stateToggle() {
 
         var state = $(this).attr('data-state');
 
@@ -75,7 +82,5 @@ $(document).ready(function() {
             $(this).attr('src', $(this).data('still'));
             $(this).attr('data-state', 'still');
         }
-
-    });
-
+    }
 });

@@ -2,6 +2,19 @@
   margin-top: 5px;
 }
 
+.jumbotron,
+h1 {
+  font-family: 'Pacifico', cursive;
+}
+
+.btn-info {
+  margin: 2px;
+}
+
 .img-thumbnail {
   margin: 10px;
+}
+
+body {
+  background-color: #222;
 }
