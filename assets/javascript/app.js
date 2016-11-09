@@ -1,8 +1,10 @@
 $(document).ready(function() {
 
     var feels = ['Happy Dance', 'So Tired', 'Yas, Kween!', 'I Can\'t Even', 'Forgot How to Person',
-        'Huh?', 'Angry', 'Scared', 'Forever Alone', 'Mic Drop', 'Welp', 'Proud', 'Hangry', 'Curious', 'Jealous'
+        'Huh?', 'Mad', 'Scared', 'Forever Alone', 'Mic Drop', 'Welp', 'Shy', 'Proud', 'Need Lasagna', 'Curious', 'Jealous', 'Schadenfreude'
     ];
+
+    // --------------------------------------------Main Process--------------------------------------
 
     renderButtons();
 
@@ -38,7 +40,7 @@ $(document).ready(function() {
 
         var searchFeels = $(this).data('search');
 
-        var queryURL = "http://api.giphy.com/v1/gifs/search?q=" + searchFeels + "&api_key=dc6zaTOxFJmzC&limit=10";
+        var queryURL = "http://api.giphy.com/v1/gifs/search?q=" + searchFeels + "&api_key=dc6zaTOxFJmzC&limit=10&rating=pg-13";
 
         $.ajax({
                 url: queryURL,
