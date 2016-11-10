@@ -40,7 +40,7 @@ $(document).ready(function() {
 
         var searchFeels = $(this).data('search');
 
-        var queryURL = "http://api.giphy.com/v1/gifs/search?q=" + searchFeels + "&api_key=dc6zaTOxFJmzC&limit=10&rating=pg-13";
+        var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + searchFeels + "&api_key=dc6zaTOxFJmzC&limit=10&rating=pg-13";
 
         $.ajax({
                 url: queryURL,
