@@ -50,7 +50,7 @@ $(document).ready(function() {
 
                 for (var i = 0; i < response.data.length; i++) {
                     $('#GIF-area').prepend('<div id="img' + i + '">' + "<img src='" + response.data[i].images.fixed_height_still.url + "'" + "data-still='" + response.data[i].images.fixed_height_still.url + "'" + "data-animate='" + response.data[i].images.fixed_height.url + "'>");
-                    $('#img' + i).append('<h5>Rating: ' + response.data[i].rating + '</h5>')
+                    $('#img' + i).append('<h5>Rating: ' + response.data[i].rating)
                         .addClass('img-thumbnail');
                     $('img').addClass('gif');
                     $('img').attr("data-state", "still");
