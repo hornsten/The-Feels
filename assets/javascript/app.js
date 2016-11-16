@@ -29,7 +29,7 @@ $(document).ready(function() {
             // Then dynamically generates buttons for each feel in the array
 
             var button = $('<button class="btn btn-info">');
-            button.addClass('feel'); // Adds a class 
+            button.addClass('feel animated bounce'); // Adds a class 
             button.attr('data-search', feels[i]); // Adds a data-attribute
             button.text(feels[i]); // Provides the initial button text
             $('#button-area').append(button); // Adds the button to the HTML
@@ -51,7 +51,7 @@ $(document).ready(function() {
                 for (var i = 0; i < response.data.length; i++) {
                     $('#GIF-area').prepend('<div id="img' + i + '">' + "<img src='" + response.data[i].images.fixed_height_still.url + "'" + "data-still='" + response.data[i].images.fixed_height_still.url + "'" + "data-animate='" + response.data[i].images.fixed_height.url + "'>");
                     $('#img' + i).append('<h5>Rating: ' + response.data[i].rating)
-                        .addClass('img-thumbnail');
+                        .addClass('img-thumbnail animated tada');
                     $('img').addClass('gif');
                     $('img').attr("data-state", "still");
 
@@ -63,15 +63,18 @@ $(document).ready(function() {
         // This line of code will grab the input from the textbox
         var feel = $('#feels-input').val().trim();
 
+
         // The feel from the textbox is then added to the feels array
         feels.push(feel);
 
         // Our array then runs, which handles the processing of the array
         renderButtons();
-
+        $('#feels-input').val("");
         // This allows users to hit "enter" instead of clicking on the search button and stay on the page
         return false;
     }
+
+
 
     function stateToggle() {
 
